@@ -120,7 +120,7 @@ userSchema.methods.makeVerifyLink = function() {
 
     var token = jwt.sign(payload, JWT_SECRET);
 
-    return `http://localhost:3000/api/users/verify/${token}`;
+    return `https://simple-ebay.herokuapp.com/api/users/verify/${token}`;
 };
 
 var User = mongoose.model('User', userSchema);
