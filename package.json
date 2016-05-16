@@ -1,0 +1,23 @@
+{
+  "name": "simple-ebay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brett Hartman",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^6.2.0",
+    "moment": "^2.13.0",
+    "mongoose": "^4.4.17",
+    "morgan": "^1.7.0",
+    "sendgrid": "^2.0.0"
+  }
+}

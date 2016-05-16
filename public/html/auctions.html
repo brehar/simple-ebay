@@ -1,0 +1,45 @@
+<nav class="blue-grey">
+    <div class="nav-wrapper">
+        <a ui-sref="home" class="brand-logo center">myBay Auctions</a>
+        <ul class="left hide-on-med-and-down">
+            <li class="active"><a ui-sref="auctions">View Listings</a></li>
+            <li><a ui-sref="post">Post Listing</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a ui-sref="account">My Account</a></li>
+            <li><a ui-sref="logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="input-field col s12">
+            <input type="text" id="search" class="validate" ng-model="searchFilter">
+            <label for="search">Search Auctions</label>
+        </div>
+    </div>
+    <div class="row">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Item</th>
+                    <th>Starting Price</th>
+                    <th>Current Bid</th>
+                    <th>Auction Ends</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="auction in auctions | filter:searchFilter" ui-sref="details({id: auction._id})">
+                    <td><img ng-src="{{ auction.image }}" class="resize"></td>
+                    <td>{{ auction.name }}</td>
+                    <td>{{ auction.startPrice | currency : '$' : 2 }}</td>
+                    <td ng-if="auction.currentBid">{{ auction.currentBid | currency : '$' : 2 }}</td>
+                    <td ng-if="!auction.currentBid"><span class="italic">None</span></td>
+                    <td>{{ auction.createdAt | auctionEnds : auction.duration }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

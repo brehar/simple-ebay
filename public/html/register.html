@@ -1,0 +1,46 @@
+<nav class="blue-grey">
+    <div class="nav-wrapper">
+        <a ui-sref="home" class="brand-logo center">myBay Auctions</a>
+        <ul class="left hide-on-med-and-down">
+            <li><a ui-sref="login">Login</a></li>
+            <li class="active"><a ui-sref="register">Register</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <form class="col s6 offset-s3" ng-submit="registerUser()">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="firstname" type="text" class="validate" ng-model="newUser.firstname" required>
+                    <label for="firstname">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="lastname" type="text" class="validate" ng-model="newUser.lastname" required>
+                    <label for="lastname">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate" ng-model="newUser.email" required>
+                    <label for="email">E-mail Address</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" ng-model="newUser.password" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center">
+                    <button class="btn waves-effect waves-light" type="submit">Register <i class="material-icons right">send</i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row center">
+        <p>Already have an account? <a ui-sref="login">Login</a></p>
+    </div>
+</div>

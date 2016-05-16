@@ -1,0 +1,59 @@
+<nav class="blue-grey">
+    <div class="nav-wrapper">
+        <a ui-sref="home" class="brand-logo center">myBay Auctions</a>
+        <ul class="left hide-on-med-and-down">
+            <li><a ui-sref="auctions">View Listings</a></li>
+            <li><a ui-sref="post">Post Listing</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li class="active"><a ui-sref="account">My Account</a></li>
+            <li><a ui-sref="logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <h5 class="center">Your Listings</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Current Bid</th>
+                        <th>Edit Auction</th>
+                        <th>Delete Auction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="posting in postings">
+                        <td ui-sref="details({id: posting._id})">{{ posting.name }}</td>
+                        <td ng-if="posting.currentBid" ui-sref="details({id: posting._id})">{{ posting.currentBid | currency : '$' : 2 }}</td>
+                        <td ng-if="!posting.currentBid" class="italic" ui-sref="details({id: posting._id})">None</td>
+                        <td><button type="button" class="btn" ui-sref="editauction({id: posting._id})"><i class="material-icons">mode_edit</i></button></td>
+                        <td><button type="button" class="btn" ng-click="deleteauction(posting._id, posting)"><i class="material-icons">delete</i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h5 class="center">Your Bids (Currently Winning)</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Your Bid</th>
+                        <th>Auction Ends</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="winning in winnings" ui-sref="details({id: winning._id})">
+                        <td>{{ winning.name }}</td>
+                        <td>{{ winning.currentBid | currency : '$' : 2 }}</td>
+                        <td>{{ winning.createdAt | auctionEnds : winning.duration }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

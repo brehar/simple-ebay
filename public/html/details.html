@@ -1,0 +1,48 @@
+<nav class="blue-grey">
+    <div class="nav-wrapper">
+        <a ui-sref="home" class="brand-logo center">myBay Auctions</a>
+        <ul class="left hide-on-med-and-down">
+            <li><a ui-sref="auctions">View Listings</a></li>
+            <li><a ui-sref="post">Post Listing</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a ui-sref="account">My Account</a></li>
+            <li><a ui-sref="logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col s6 center">
+            <img class="resize-large" ng-src="{{ auction.image }}">
+        </div>
+        <div class="col s6 center">
+            <h5>{{ auction.name }}</h5>
+            <p class="italic">{{ auction.description }}</p>
+            <p><span class="underline">Posted By</span>: <a ng-href="mailto:{{ auction.poster.email }}">{{ auction.poster.firstname }} {{ auction.poster.lastname }}</a></p>
+            <p><span class="underline">Auction Ends</span>: {{ auction.createdAt | auctionEnds : auction.duration }}</p>
+            <p><span class="underline">Starting Price</span>: {{ auction.startPrice | currency : '$' : 2 }}</p>
+            <p ng-if="auction.currentBid"><span class="underline">Current Bid</span>: {{ auction.currentBid | currency : '$' : 2 }}</p>
+            <p ng-if="!auction.currentBid"><span class="underline">Current Bid</span>: <span class="italic">None</span></p>
+        </div>
+    </div>
+    <div ng-show="auction.poster._id !== currentUser._id" class="row">
+        <form class="col s12" ng-submit="submitBid()">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="bid" type="number" min="{{ (auction.currentBid || auction.startPrice) + 0.01 }}" step="0.01" class="validate" ng-model="newBid" required>
+                    <label for="bid">Your Bid</label>
+                </div>
+                <div class="input-field col s6 center">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit Bid
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div ng-show="auction.poster._id === currentUser._id" class="row center italic">
+        <p>You may not bid on your own listings.</p>
+    </div>
+</div>

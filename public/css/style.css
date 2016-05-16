@@ -1,0 +1,17 @@
+.resize {
+    width: 75px;
+    height: 75px;
+}
+
+.resize-large {
+    width: 350px;
+    height: 350px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}

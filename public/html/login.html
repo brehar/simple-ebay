@@ -1,0 +1,35 @@
+<nav class="blue-grey">
+    <div class="nav-wrapper">
+        <a ui-sref="home" class="brand-logo center">myBay Auctions</a>
+        <ul class="left hide-on-med-and-down">
+            <li class="active"><a ui-sref="login">Login</a></li>
+            <li><a ui-sref="register">Register</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <form class="col s6 offset-s3" ng-submit="loginUser()">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="email" type="email" class="validate" ng-model="user.email" required>
+                    <label for="email">E-mail Address</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <input id="password" type="password" class="validate" ng-model="user.password" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center">
+                    <button type="submit" class="waves-effect waves-light btn">Login <i class="material-icons right">send</i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
